@@ -3,8 +3,8 @@ import ReactTable from 'react-table-v6';
 import 'react-table-v6/react-table.css';
 import Button from '@material-ui/core/Button';
 import Moment from 'moment';
-//import AddTraining from './addtraining';
-//import EditTraining from './edittraining';
+
+
 
 
 
@@ -49,7 +49,7 @@ export default function Traininglist () {
 
     return (
         <div>
-            <ReactTable filterable={true} data={trainings} columns={columns}/>
+            <ReactTable filterable={true} sortable={true} data={trainings} columns={columns}/>
         </div>
     );
 }

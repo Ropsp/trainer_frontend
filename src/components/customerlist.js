@@ -51,7 +51,7 @@ export default function Customerlist () {
 
     return (
         <div>
-            <ReactTable filterable={true} data={customers} columns={columns}/>
+            <ReactTable filterable={true} sortable={true} data={customers} columns={columns}/>
         </div>
     );
 }
