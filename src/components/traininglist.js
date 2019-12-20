@@ -10,6 +10,9 @@ import Moment from 'moment';
 
 export default function Traininglist () {
     const [trainings, setTrainings] = useState ([]);
+    const tlink = 'https://customerrest.herokuapp.com/api/trainings/'
+    const [alert, setAlert] = useState("");
+    const [open, setOpen] = useState(false);
 
     useEffect(() => fetchData(), []);
 
@@ -18,6 +21,16 @@ export default function Traininglist () {
         .then (response => response.json())
         .then (data => setTrainings(data))
         .catch (err => console.error(err))
+    }
+
+    const deleteTraining = (link) => {
+        if (window.confirm('Are you sure you want to delete this training?')) {
+            fetch(tlink + link, { method: 'DELETE' })
+                .then(res => fetchData())
+                .then(res => setAlert('Training deleted!'))
+                .then(res => setOpen(true))
+                .catch(err => console.error(err))
+        }
     }
 
     const columns = [
@@ -43,6 +56,13 @@ export default function Traininglist () {
             Header: 'Customers lastname',
             accessor: 'customer.lastname'
         },
+        {
+            sortable: false,
+            filterable: false,
+            width: 100,
+            accessor: 'id',
+            Cell: row => <Button color="secondary" size="small" onClick={() => deleteTraining(row.value)}>Delete</Button>
+        }
         
         
     ]
