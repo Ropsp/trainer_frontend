@@ -7,6 +7,7 @@ import Navigator from './components/navigator'
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import Calendar from './components/calendar';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path= "/" component={Customerlist} />
         <Route path="/customerlist" component={Customerlist}></Route>
           <Route path="/trainings" component={Traininglist}/>
+          <Route path="/calendar" component={Calendar}/>
           <Route render= {() => <h1>Page not found</h1>}/>
         </Switch>
           
